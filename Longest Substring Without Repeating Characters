@@ -1,0 +1,24 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        n = len(s)
+        nums = []
+        if s == '':
+            return 0
+        if len(s) == 1:
+            return 1
+        for i in range(n):
+            temp = s[i]
+            for j in range(i + 1, n):
+                if s[j] not in temp:
+                    temp += (s[j])
+                    if j == (n - 1):
+                        nums.append(len(temp))
+                        return max(nums)
+                else:
+                    nums.append(len(temp))
+                    break
+        return max(nums)
